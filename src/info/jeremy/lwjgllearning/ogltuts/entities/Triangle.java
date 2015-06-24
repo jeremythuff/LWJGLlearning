@@ -8,6 +8,7 @@ import java.nio.FloatBuffer;
 
 import org.lwjgl.BufferUtils;
 
+import info.jeremy.lwjgllearning.graphics.Renderer;
 import info.jeremy.lwjgllearning.math.Vector3f;
 
 
@@ -16,7 +17,9 @@ public class Triangle extends Renderable {
 	private int VBO;
 
 	
-	public Triangle() {
+	public Triangle(Renderer renderer) {
+		
+		super(renderer);
 		
 		float[] vao = {
 			-1.0f, -1.0f, 0.0f, //left

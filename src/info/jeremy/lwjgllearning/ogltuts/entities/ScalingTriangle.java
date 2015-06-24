@@ -8,6 +8,7 @@ import java.nio.FloatBuffer;
 
 import org.lwjgl.BufferUtils;
 
+import info.jeremy.lwjgllearning.graphics.Renderer;
 import info.jeremy.lwjgllearning.graphics.Shader;
 import info.jeremy.lwjgllearning.graphics.ShaderProgram;
 
@@ -22,7 +23,11 @@ public class ScalingTriangle extends Renderable {
 	static float scale = 0.0f;
 
 		
-	public ScalingTriangle() {
+	public ScalingTriangle(Renderer renderer) {
+		
+		super(renderer);
+		
+		System.out.println("New Scailing Triangle");
 		
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		
@@ -40,6 +45,7 @@ public class ScalingTriangle extends Renderable {
 		ebo.flip();
 		
 		VBO = glGenBuffers();
+				
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		glBufferData(GL_ARRAY_BUFFER, ebo, GL_STATIC_DRAW);
 		glEnableVertexAttribArray(0);
@@ -59,9 +65,6 @@ public class ScalingTriangle extends Renderable {
 
 	@Override
 	public void render() {
-		
-		glClear(GL_COLOR_BUFFER_BIT);
-		
 		gWorldLocation = shaderProgram.getUniformLocation("gWorld"); 
 		if(gWorldLocation == -1) {
         	System.err.println("No program id by the handle gWorld");
@@ -88,7 +91,7 @@ public class ScalingTriangle extends Renderable {
 		}
 		ebo.flip();
 		
-        
+ 
         glUniformMatrix4fv(gWorldLocation, true, ebo);
 		
         glEnableVertexAttribArray(0);
@@ -97,7 +100,7 @@ public class ScalingTriangle extends Renderable {
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glDisableVertexAttribArray(0);
 		
-		
+		renderer.flush();
 	}
 
 	@Override

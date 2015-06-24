@@ -8,6 +8,7 @@ import java.nio.FloatBuffer;
 
 import org.lwjgl.BufferUtils;
 
+import info.jeremy.lwjgllearning.graphics.Renderer;
 import info.jeremy.lwjgllearning.graphics.Shader;
 import info.jeremy.lwjgllearning.graphics.ShaderProgram;
 
@@ -22,7 +23,9 @@ public class RotationTriangle extends Renderable {
 	static float scale = 0.0f;
 
 		
-	public RotationTriangle() {
+	public RotationTriangle(Renderer renderer) {
+		
+		super(renderer);
 		
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		

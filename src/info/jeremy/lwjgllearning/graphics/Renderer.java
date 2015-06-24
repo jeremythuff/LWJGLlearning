@@ -109,8 +109,8 @@ public class Renderer {
 
         /* Load shaders */
         if (defaultContext) {
-            vertexShader = Shader.loadShader(GL_VERTEX_SHADER, "resources/default_vertex.glsl");
-            fragmentShader = Shader.loadShader(GL_FRAGMENT_SHADER, "resources/default_fragment.glsl");
+            vertexShader = Shader.loadShader(GL_VERTEX_SHADER, "src/info/jeremy/lwjgllearning/shaders/default.vs");
+            fragmentShader = Shader.loadShader(GL_FRAGMENT_SHADER, "src/info/jeremy/lwjgllearning/shaders/default.fs");
         } else {
             vertexShader = Shader.loadShader(GL_VERTEX_SHADER, "resources/legacy_vertex.glsl");
             fragmentShader = Shader.loadShader(GL_FRAGMENT_SHADER, "resources/legacy_fragment.glsl");

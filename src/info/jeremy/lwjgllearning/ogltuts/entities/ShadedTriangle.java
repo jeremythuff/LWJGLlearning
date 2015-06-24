@@ -18,6 +18,7 @@ import java.nio.FloatBuffer;
 
 import org.lwjgl.BufferUtils;
 
+import info.jeremy.lwjgllearning.graphics.Renderer;
 import info.jeremy.lwjgllearning.graphics.Shader;
 import info.jeremy.lwjgllearning.graphics.ShaderProgram;
 
@@ -26,7 +27,9 @@ public class ShadedTriangle extends Renderable {
 	private int VBO;
 	private ShaderProgram shaderProgram;
 	
-	public ShadedTriangle() {
+	public ShadedTriangle(Renderer renderer) {
+		
+		super(renderer);
 
 		Shader triVS = Shader.loadShader(GL_VERTEX_SHADER, "src/info/jeremy/lwjgllearning/shaders/tri.vs");
 		Shader triFS = Shader.loadShader(GL_FRAGMENT_SHADER, "src/info/jeremy/lwjgllearning/shaders/tri.fs");

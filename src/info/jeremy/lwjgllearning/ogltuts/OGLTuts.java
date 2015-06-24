@@ -8,6 +8,7 @@ import org.lwjgl.BufferUtils;
 
 import static org.lwjgl.stb.STBEasyFont.*;
 import info.jeremy.lwjgllearning.Engine;
+import info.jeremy.lwjgllearning.graphics.Renderer;
 import info.jeremy.lwjgllearning.io.Window;
 import info.jeremy.lwjgllearning.ogltuts.entities.Dot;
 import info.jeremy.lwjgllearning.ogltuts.entities.Rectangle;
@@ -23,54 +24,66 @@ import static org.lwjgl.opengl.GL11.*;
 public class OGLTuts extends Engine
 {
 	
-	Font font;
-	
 	//Dot dot;
-	//Triangle trianlge;
+	Triangle trianlge;
 	//Rectangle rec;
 	//ShadedTriangle shadedTriangle;
 	//UniformTriangle uniformTriangle;
 	//TranslationTriangle translationTriangle;
 	//RotationTriangle rotationTraingle;
-	ScalingTriangle scalingTriangle;
+	//ScalingTriangle scalingTriangle;
+	
+	private CharSequence chars;
 
-    public void init() {
+    public void init(Renderer renderer) {
+    	
        glfwSetWindowTitle(OGLTuts.getWindowID(), "OGL TUTS");
        //dot = new Dot();
-       //trianlge = new Triangle();
+       trianlge = new Triangle(renderer);
        //rec = new Rectangle();
        //shadedTriangle = new ShadedTriangle();
        //uniformTriangle = new UniformTriangle();
        //translationTriangle = new TranslationTriangle();
        //rotationTraingle = new RotationTriangle();
-       scalingTriangle = new ScalingTriangle();
+       //scalingTriangle = new ScalingTriangle(renderer);
 
     }
 
     public void render(float delta) {
-        glClear(GL_COLOR_BUFFER_BIT);
+    	
+
+    	renderer.begin();
+	        //dot.render();
+	        trianlge.render();
+	        //rec.render();
+	        //shadedTriangle.render();
+	        //uniformTriangle.render();
+	        //translationTriangle.render();
+	        //rotationTraingle.render();
+	    	//scalingTriangle.render();
+        renderer.end();
         
-        //dot.render();
-        //trianlge.render();
-        //rec.render();
-        //shadedTriangle.render();
-        //uniformTriangle.render();
-        //translationTriangle.render();
-        //rotationTraingle.render();
-        scalingTriangle.render();
         
+        chars = fps + " fps";
+     	renderer.drawDebugText(chars, 25f, 25f);
+      	chars = "Mouse X: "+lastX+" Mouse Y:"+lastY;	
+  		renderer.drawDebugText(chars, 25, 50);
+  		
+ 
+        
+      
         
     }
 
     public void dispose() {
        //dot.dispose();
-       //trianlge.dispose();
+       trianlge.dispose();
        //rec.dispose();
     	//shadedTriangle.dispose();
     	//uniformTriangle.dispose();
     	//translationTriangle.dispose();
     	//rotationTraingle.dispose();
-    	scalingTriangle.render();
+    	//scalingTriangle.dispose();
     }
 
     public static void main(String[] args) {

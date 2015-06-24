@@ -4,6 +4,7 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.*;
+import info.jeremy.lwjgllearning.graphics.Renderer;
 import info.jeremy.lwjgllearning.graphics.Shader;
 import info.jeremy.lwjgllearning.graphics.ShaderProgram;
 
@@ -21,8 +22,10 @@ public class Rectangle extends Renderable {
 	
     private ShaderProgram shaderProgram;
     
-	public Rectangle() {
-		
+	public Rectangle(Renderer renderer) {
+	
+			super(renderer);
+			
 			Shader recVS = Shader.loadShader(GL_VERTEX_SHADER, "src/info/jeremy/lwjgllearning/shaders/rec.vs");
 			Shader recFS = Shader.loadShader(GL_FRAGMENT_SHADER, "src/info/jeremy/lwjgllearning/shaders/rec.fs");
 		

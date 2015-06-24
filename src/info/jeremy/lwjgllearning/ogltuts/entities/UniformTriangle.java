@@ -8,6 +8,7 @@ import java.nio.FloatBuffer;
 
 import org.lwjgl.BufferUtils;
 
+import info.jeremy.lwjgllearning.graphics.Renderer;
 import info.jeremy.lwjgllearning.graphics.Shader;
 import info.jeremy.lwjgllearning.graphics.ShaderProgram;
 
@@ -19,7 +20,9 @@ public class UniformTriangle extends Renderable {
 	
 	static float scale = 0.0f;
 	
-	public UniformTriangle() {
+	public UniformTriangle(Renderer renderer) {
+		
+		super(renderer);
 
 		Shader tri2VS = Shader.loadShader(GL_VERTEX_SHADER, "src/info/jeremy/lwjgllearning/shaders/tri2.vs");
 		Shader tri2FS = Shader.loadShader(GL_FRAGMENT_SHADER, "src/info/jeremy/lwjgllearning/shaders/tri2.fs");

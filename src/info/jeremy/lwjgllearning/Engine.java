@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
+import info.jeremy.lwjgllearning.graphics.Renderer;
 import info.jeremy.lwjgllearning.io.Font;
 import info.jeremy.lwjgllearning.io.Window;
 
@@ -33,13 +34,16 @@ public class Engine
     
     private static Window window;
     
-    public static double timer;
-	
+    public static double timer = 0;
 	public static int frames = 0;
+	public static int fps;
+	
+	public static double lastX = 0, lastY = 0;
 	
 	public Font font;
-
 	public int fontHeight;
+
+	public static Renderer renderer; 
 	
     public Engine()
     {
@@ -48,17 +52,17 @@ public class Engine
     	
         glfwMakeContextCurrent(window.id);
         GLContext.createFromCurrent();
-
+       
         glfwSwapInterval(1);
     }
 
-    public void init() {}
+    public void init(Renderer renderer) {}
 
-    public void update(float delta) {}
+    protected void update(float delta) {}
 
-    public void render(float delta) {}
+    protected void render(float delta) {}
 
-    public void dispose() {}
+    protected void dispose() {}
 
     public void start()
     {
@@ -90,7 +94,9 @@ public class Engine
         fontHeight = imageHeight;
 
         // Initialise the Game
-        init();
+        renderer = new Renderer();
+        renderer.init(true);
+        init(renderer);
 
         running = true;
 
@@ -98,22 +104,37 @@ public class Engine
  		
         while (running && glfwWindowShouldClose(window.id) != GL_TRUE)
         {
+        	
+        	renderer.clear();
+        	
             // Get the time
             now = (float) glfwGetTime();
             delta = now - last;
             last = now;
-
+            
+            
             update(delta);
             render(delta);
             frames ++;
             
             if (glfwGetTime() - timer > 1) {
 				timer += 1;
-				
-				System.out.println(frames + " fps");
+		        fps = frames;
 				frames = 0;
 			}
-                       
+            
+           
+            	
+            	
+  
+        	
+            
+	            
+            
+
+
+
+            
             int error = glGetError();
     		if (error != GL_NO_ERROR)
     			System.out.println(error);
@@ -194,8 +215,9 @@ public class Engine
     }
 
     public void glfwCursorPosCallback(long window, double xpos, double ypos) {
-    	
-    	System.out.println("Mx: "+xpos+" My:"+ypos);
+       	
+    	lastX = xpos;
+    	lastY = ypos;
     	
     }
 

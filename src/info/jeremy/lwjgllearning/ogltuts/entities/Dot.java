@@ -8,6 +8,7 @@ import java.nio.FloatBuffer;
 
 import org.lwjgl.BufferUtils;
 
+import info.jeremy.lwjgllearning.graphics.Renderer;
 import info.jeremy.lwjgllearning.math.Vector3f;
 
 
@@ -16,7 +17,9 @@ public class Dot extends Renderable {
 	private int VBO;
 
 	
-	public Dot() {
+	public Dot(Renderer renderer) {
+		
+		super(renderer);
 		
 		Vector3f vertices = new Vector3f();
 		vertices.add(new Vector3f(0.0f, 0.0f, 0.0f));
@@ -38,12 +41,9 @@ public class Dot extends Renderable {
 
 	@Override
 	public void render() {
-		
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
 		glDrawArrays(GL_POINTS, 0, 1);
-		
-				
 	}
 
 	@Override

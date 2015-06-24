@@ -4,9 +4,10 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="jar/lwjgl.jar" sourcepath="src.zip">
 		<attributes>
-			<attribute name="javadoc_location" value="file:/C:/Users/Huffsiz/development/java/games/VoxelEngine/doc/javadoc/"/>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="VoxelEngine/native"/>
+			<attribute name="javadoc_location" value="file:/C:/Users/Huffsiz/development/java/games/LWJGLlearning/doc/javadoc/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="LWJGLlearning/native"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="jar/slick-util.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
